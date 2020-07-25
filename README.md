@@ -3,7 +3,7 @@
 
 [![PyPI version](https://badge.fury.io/py/voronoi-diagram.svg)](https://badge.fury.io/py/voronoi-diagram-for-polygons)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/voronoi-diagram-for-polygons)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3893596.svg)](https://doi.org/10.5281/zenodo.3893596)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3960407.svg)](https://doi.org/10.5281/zenodo.3960407)
 
 [Voronoi diagram for polygons] is a tool to create a [Voronoi diagram] also known as [Thiessen polygons] for **polygons**. It's based on [Shapely] and [GeoPandas]. There are lots of tools to create a [Voronoi diagram] for points, for example [Create Thiessen Polygons (Analysis)] in [ArcGIS Pro] or [ArcGIS Desktop], [Voronoi Polygons] in [QGIS], or [voronoi_diagram] in [Shapely]. All of them are really cool. How about a [Voronoi diagram] for polygons? That's what this tool does.
 
@@ -72,10 +72,10 @@ If this tool is useful to your research,
 <a class="github-button" href="https://github.com/longavailable/adaptive-curvefitting" aria-label="Star longavailable/adaptive-curvefitting on GitHub">star</a> and cite it as below:
 ```
 Xiaolong Liu, & Meixiu Yu. (2020, July 26). longavailable/voronoi-diagram-for-polygons. Zenodo. 
-http://doi.org/10.5281/zenodo.3893596
+http://doi.org/10.5281/zenodo.3960407
 ```
 Easily, you can import it to 
-<a href="https://www.mendeley.com/import/?url=https://zenodo.org/record/3893596" class="eye-protector-processed" style="border-color: rgba(0, 0, 0, 0.35); color: rgb(0, 0, 0);"><i class="fa fa-external-link"></i> Mendeley</a>.
+<a href="https://www.mendeley.com/import/?url=https://zenodo.org/record/3960407"><i class="fa fa-external-link"></i> Mendeley</a>.
 
 ## Changelog
 
