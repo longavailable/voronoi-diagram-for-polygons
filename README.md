@@ -1,7 +1,7 @@
                              
 # Voronoi diagram for polygons
 
-[![PyPI version](https://badge.fury.io/py/voronoi-diagram.svg)](https://badge.fury.io/py/voronoi-diagram-for-polygons)
+[![PyPI version](https://badge.fury.io/py/voronoi-diagram-for-polygons.svg)](https://badge.fury.io/py/voronoi-diagram-for-polygons)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/voronoi-diagram-for-polygons)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3960407.svg)](https://doi.org/10.5281/zenodo.3960407)
 
