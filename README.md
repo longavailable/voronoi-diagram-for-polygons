@@ -69,7 +69,7 @@ pip uninstall voronoi-diagram-for-polygons
 ## How to cite
 
 If this tool is useful to your research, 
-<a class="github-button" href="https://github.com/longavailable/adaptive-curvefitting" aria-label="Star longavailable/adaptive-curvefitting on GitHub">star</a> and cite it as below:
+<a class="github-button" href="https://github.com/longavailable/voronoi-diagram-for-polygons" aria-label="Star longavailable/voronoi-diagram-for-polygons on GitHub">star</a> and cite it as below:
 ```
 Xiaolong Liu, & Meixiu Yu. (2020, July 26). longavailable/voronoi-diagram-for-polygons. Zenodo. 
 http://doi.org/10.5281/zenodo.3960407
