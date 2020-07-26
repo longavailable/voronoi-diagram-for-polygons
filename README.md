@@ -46,7 +46,7 @@ Or from github:
 ```bash
 pip install git+https://github.com/longavailable/voronoi-diagram-for-polygons
 ```
-Also, you can just copy related functions from "[/longsgis/longsgis.py]" to your work.
+Also, you can just copy related functions from *[/longsgis/longsgis.py]* to your work.
 
 ### To update
 
@@ -95,4 +95,5 @@ Easily, you can import it to
 [Voronoi polygons]: https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/vectorgeometry.html#voronoi-polygons
 [QGIS]: https://qgis.org/en/site/
 [voronoi_diagram]: https://shapely.readthedocs.io/en/latest/manual.html?#voronoi-diagram
+[/longsgis/longsgis.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/longsgis/longsgis.py
 
