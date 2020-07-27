@@ -18,6 +18,7 @@
   * [To install](#to-install)
   * [To update](#to-update)
   * [To uninstall](#to-uninstall)
+- [Usage](#usage)
 - [Known shortages](#known-shortages)
 - [How to cite?](#how-to-cite)
 - [Changelog](#changelog)
@@ -46,7 +47,7 @@ Or from github:
 ```bash
 pip install git+https://github.com/longavailable/voronoi-diagram-for-polygons
 ```
-Also, you can just copy related functions from *[/longsgis/longsgis.py]* to your work.
+Also, you can just copy related functions from *[longsgis/longsgis.py]* to your work.
 
 ### To update
 
@@ -60,12 +61,56 @@ pip install --upgrade voronoi-diagram-for-polygons
 pip uninstall voronoi-diagram-for-polygons
 ```
 
+## Usage
+
+See *[tests/01voronoiDiagram4plg.py]*.
+```python
+import geopandas as gpd
+from longsgis import voronoiDiagram4plg
+
+builtup = gpd.read_file('input.geojson'); builtup.crs = 32650
+boundary = gpd.read_file('boundary.geojson'); boundary.crs = 32650
+vd = voronoiDiagram4plg(builtup, boundary)
+vd.to_file('output.geojson', driver='GeoJSON')
+```
+
 ## Known shortages
 
 - It may produce some polygons (unconnected polygons) around the boundary.
 
-<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug001.png"/>
+	<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug001.png"/>
 
+- Specil input may cause overlap. See the following:
+
+	<p float="left">
+	<img width="300" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug002_input.png"/>
+	<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug002_output.png"/>
+	</p>
+	
+	*To avoid this, I recommend reasonable preprocessing of the input, but use a buffer operation with high-resolution carefully.* A buffer operation with high-resolution will result in circular arcs, which will generate too many vertices in a local area. This may trigger other bugs. In my practices, the following code snippet worked well.
+	
+	```python
+def bufferDissolve(gdf, distance, join_style=3):
+	'''Create buffer and dissolve thoese intersects.
+	
+	Parameters:
+		gdf: 
+			Type: geopandas.GeoDataFrame
+		distance: radius of the buffer
+			Type: float
+	Returns:
+		gdf_bf: buffered and dissolved GeoDataFrame
+			Type: geopandas.GeoDataFrame
+	'''
+	#create buffer and dissolve by invoking `unary_union`
+	smp = gdf.buffer(distance, join_style).unary_union
+	#convert to GeoSeries and explode to single polygons
+	gs = gpd.GeoSeries([smp]).explode()
+	#convert to GeoDataFrame
+	gdf_bf = gpd.GeoDataFrame(geometry=gs, crs=gdf.crs).reset_index(drop=True)
+return gdf_bf
+	```
+	
 ## How to cite
 
 If this tool is useful to your research, 
@@ -95,5 +140,6 @@ Easily, you can import it to
 [Voronoi polygons]: https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/vectorgeometry.html#voronoi-polygons
 [QGIS]: https://qgis.org/en/site/
 [voronoi_diagram]: https://shapely.readthedocs.io/en/latest/manual.html?#voronoi-diagram
-[/longsgis/longsgis.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/longsgis/longsgis.py
+[longsgis/longsgis.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/longsgis/longsgis.py
+[tests/01voronoiDiagram4plg.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/tests/01voronoiDiagram4plg.py
 
