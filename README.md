@@ -12,7 +12,7 @@
 <img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/outputs.png"/>
 </p>
 
-[***Important!***](#dependencies) You have to install or upgrade to the latest developing version before install [Voronoi diagram for polygons]
+[***Important!***](#dependencies) You have to install or upgrade to the latest developing version of [Shapely] before install [Voronoi diagram for polygons]
 
 ## Table of contents
 - [Installation, update and uninstallation](#installation--update-and-uninstallation)
