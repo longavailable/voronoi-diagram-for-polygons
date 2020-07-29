@@ -41,7 +41,7 @@ pip install --upgrade git+https://github.com/Toblerity/Shapely
 
 ### To install
 
-Quick installation with [pip]:
+Quick installation with `pip`:
 ```bash
 pip install voronoi-diagram-for-polygons
 ```
