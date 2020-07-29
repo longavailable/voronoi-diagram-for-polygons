@@ -12,6 +12,8 @@
 <img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/outputs.png"/>
 </p>
 
+[**Important!**](#dependencies)
+
 ## Table of contents
 - [Installation, update and uninstallation](#installation--update-and-uninstallation)
 	* [Dependencies](#dependencies)
@@ -27,7 +29,7 @@
 
 ### Dependencies
 
-It's based on `voronoi_diagram` from [Shapely] which is new in version 1.8.dev0. As of today, it is still a deveoping version. *(2020-07-26)* You can install or upgrade to the latest version by using:
+**Important!** It's based on `voronoi_diagram` from [Shapely] which is new in version 1.8.dev0. As of today, it is still a developing version. *(2020-07-26)* You have to install or upgrade to the developing version from source:
 
 ```bash
 pip install git+https://github.com/Toblerity/Shapely
