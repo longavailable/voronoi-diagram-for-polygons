@@ -78,11 +78,11 @@ vd.to_file('output.geojson', driver='GeoJSON')
 
 ## Known shortages
 
-- It may produce some polygons (unconnected polygons) around the boundary.
+- It may produce multipolygons (consisted by some unconnected polygons) around the boundary.
 
 	<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug001.png"/>
 
-- Specil input may cause overlap. See the following:
+- Special input may cause overlap. See the following:
 
 	<p float="left">
 	<img width="300" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug002_input.png"/>
