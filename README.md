@@ -3,6 +3,7 @@
 
 [![PyPI version](https://badge.fury.io/py/voronoi-diagram-for-polygons.svg)](https://badge.fury.io/py/voronoi-diagram-for-polygons)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/voronoi-diagram-for-polygons)
+[![Downloads](https://pepy.tech/badge/voronoi-diagram-for-polygons)](https://pepy.tech/project/voronoi-diagram-for-polygons)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3960407.svg)](https://doi.org/10.5281/zenodo.3960407)
 
 [Voronoi diagram for polygons] is a tool to create a [Voronoi diagram] also known as [Thiessen polygons] for **polygons**. It's based on [Shapely] and [GeoPandas]. There are lots of tools to create a [Voronoi diagram] for points, for example [Create Thiessen Polygons (Analysis)] in [ArcGIS Pro] or [ArcGIS Desktop], [Voronoi Polygons] in [QGIS], or [voronoi_diagram] in [Shapely]. All of them are really cool. How about a [Voronoi diagram] for polygons? That's what this tool does.
