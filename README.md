@@ -133,7 +133,7 @@ Easily, you can import it to
 
 ### v0.1.2
 
-- Fix [FutureWarning](https://pandas.pydata.org/docs/whatsnew/v1.4.0.html#whatsnew-140-deprecations-frame-series-append).
+- Fix a [FutureWarning](https://pandas.pydata.org/docs/whatsnew/v1.4.0.html#whatsnew-140-deprecations-frame-series-append).
 
 
 [Voronoi diagram for polygons]: https://github.com/longavailable/voronoi-diagram-for-polygons
