@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-* Updated on 2020/07/25
+* Updated on 2022/08/05
 * python3
 **
 * Geoprocessing in Python
 """
+import pandas as pd
 import geopandas as gpd
 from shapely.ops import voronoi_diagram as svd
 from shapely.geometry import Polygon, MultiPolygon
@@ -69,7 +70,7 @@ def dropHoles(gdf):
 	gdf_nohole = gpd.GeoDataFrame()
 	for g in gdf['geometry']:
 		geo = gpd.GeoDataFrame(geometry=gpd.GeoSeries(dropHolesBase(g)))
-		gdf_nohole=gdf_nohole.append(geo,ignore_index=True)
+		gdf_nohole=pd.concat([gdf_nohole, geo], ignore_index=True)
 	gdf_nohole.rename(columns={gdf_nohole.columns[0]:'geometry'}, inplace=True)
 	gdf_nohole.crs = gdf.crs
 	return gdf_nohole
