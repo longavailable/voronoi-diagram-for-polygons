@@ -135,6 +135,10 @@ Easily, you can import it to
 
 - Fix a [FutureWarning](https://pandas.pydata.org/docs/whatsnew/v1.4.0.html#whatsnew-140-deprecations-frame-series-append).
 
+### v0.1.3
+
+- Make it more robust for the less-vertice-geometry inputs. [#4](https://github.com/longavailable/voronoi-diagram-for-polygons/issues/4#issue-1378217062).
+- Fix a few ***FutureWarnings***.
 
 [Voronoi diagram for polygons]: https://github.com/longavailable/voronoi-diagram-for-polygons
 [Voronoi diagram]: https://en.wikipedia.org/wiki/Voronoi_diagram

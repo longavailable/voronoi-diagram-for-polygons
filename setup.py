@@ -1,5 +1,5 @@
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 from setuptools import setup, find_packages
 
@@ -25,5 +25,6 @@ setup(
 	install_requires=[
 		'shapely >= 1.8.dev0',
 		'geopandas',
+		'numpy',
 	 ],
 )
