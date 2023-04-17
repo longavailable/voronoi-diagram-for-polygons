@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-* Updated on 2022/11/17
+* Updated on 2023/04/17
 * python3
 **
 * Geoprocessing in Python
@@ -8,6 +8,7 @@
 import pandas as pd
 import geopandas as gpd
 import numpy as np
+import shapely
 from shapely.ops import voronoi_diagram as svd
 from shapely.geometry import Polygon, MultiPolygon
 import itertools, math
@@ -139,7 +140,10 @@ def dropHolesBase(plg):
 		a shapely.geometry.MultiPolygon or shapely.geometry.Polygon object
 	'''
 	if isinstance(plg, MultiPolygon):
-		return MultiPolygon(Polygon(p.exterior) for p in plg)
+		if shapely.__version__ < '2.0':
+			return MultiPolygon(Polygon(p.exterior) for p in plg)
+		else:
+			return MultiPolygon(Polygon(p.exterior) for p in plg.geoms)
 	elif isinstance(plg, Polygon):
 		return Polygon(plg.exterior)
 
