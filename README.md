@@ -153,12 +153,9 @@ Easily, you can import it to
 - Make it more robust for the less-vertice-geometry inputs. [#4](https://github.com/longavailable/voronoi-diagram-for-polygons/issues/4#issue-1378217062).
 - Fix a few ***FutureWarnings***.
 
-### v0.1.4
+### v0.1.6 (Merged)
 
 - Change as [Shapely] goes. `MultiPolygon` is not iterable any more from [Shapely] 2.0.
-
-### v0.1.5
-
 - Upload a few test data.
 
 [Voronoi diagram for polygons]: https://github.com/longavailable/voronoi-diagram-for-polygons
