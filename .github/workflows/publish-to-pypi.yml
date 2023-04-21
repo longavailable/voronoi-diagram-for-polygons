@@ -18,7 +18,7 @@ jobs:
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
-          pip install twine
+          pip install wheel twine
 
       - name: generate distribution archives
         run: python setup.py sdist bdist_wheel
