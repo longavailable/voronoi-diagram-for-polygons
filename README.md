@@ -9,8 +9,8 @@
 [Voronoi diagram for polygons] is a tool to create a [Voronoi diagram] also known as [Thiessen polygons] for **polygons**. It's based on [Shapely] and [GeoPandas]. There are lots of tools to create a [Voronoi diagram] for points, for example [Create Thiessen Polygons (Analysis)] in [ArcGIS Pro] or [ArcGIS Desktop], [Voronoi Polygons] in [QGIS], or [voronoi_diagram] in [Shapely]. All of them are really cool. How about a [Voronoi diagram] for polygons? That's what this tool does.
 
 <p float="left">
-<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/inputs.png"/>
-<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/outputs.png"/>
+<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/docs/pics/inputs.png"/>
+<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/docs/pics/outputs.png"/>
 </p>
 
 [***Important!***](#dependencies) You have to install or upgrade to the latest developing version of [Shapely] before install [Voronoi diagram for polygons]
@@ -94,13 +94,13 @@ vd.to_file('output.geojson', driver='GeoJSON')
 
 - It may produce multipolygons (consisted by some unconnected polygons) around the boundary.
 
-	<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug001.png"/>
+	<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/docs/pics/bug001.png"/>
 
 - Special input may cause overlap. See the following:
 
 	<p float="left">
-	<img width="300" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug002_input.png"/>
-	<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/docs/pics/bug002_output.png"/>
+	<img width="300" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/docs/pics/bug002_input.png"/>
+	<img width="150" height="150" src="https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/docs/pics/bug002_output.png"/>
 	</p>
 	
 	*To avoid this, I recommend reasonable preprocessing of the input, but use a buffer operation with high-resolution carefully.* A buffer operation with high-resolution will result in circular arcs, which will generate too many vertices in a local area. This may trigger other bugs. In my practices, the following code snippet worked well.
@@ -172,6 +172,8 @@ Easily, you can import it to
 [Voronoi polygons]: https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/vectorgeometry.html#voronoi-polygons
 [QGIS]: https://qgis.org/en/site/
 [voronoi_diagram]: https://shapely.readthedocs.io/en/latest/manual.html?#voronoi-diagram
-[longsgis/longsgis.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/longsgis/longsgis.py
-[tests/01voronoiDiagram4plg.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/master/tests/01voronoiDiagram4plg.py
+[longsgis/longsgis.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/longsgis/longsgis.py
+[tests/01voronoiDiagram4plg.py]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/tests/01voronoiDiagram4plg.py
+[input.geojson]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/tests/input.geojson
+[boundary.geojson]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/tests/boundary.geojson
 
