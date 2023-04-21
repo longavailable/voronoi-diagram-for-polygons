@@ -1,0 +1,30 @@
+name: publish to pypi
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout scripts repo
+        uses: actions/checkout@v3
+        
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install twine
+
+      - name: generate distribution archives
+        run: python setup.py sdist bdist_wheel
+
+      - name: upload to pypi.org
+        env:
+          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+        run: twine upload dist/*
