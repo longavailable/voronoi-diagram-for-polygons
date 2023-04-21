@@ -22,6 +22,7 @@
   * [To update](#to-update)
   * [To uninstall](#to-uninstall)
 - [Usage](#usage)
+- [FAQ](#faq)
 - [Known shortages](#known-shortages)
 - [How to cite?](#how-to-cite)
 - [Changelog](#changelog)
@@ -76,6 +77,18 @@ boundary = gpd.read_file('boundary.geojson'); boundary.crs = 32650
 vd = voronoiDiagram4plg(builtup, boundary)
 vd.to_file('output.geojson', driver='GeoJSON')
 ```
+
+## FAQ
+
+- I/O support.
+
+	It was noticed someone were struggled with the input/output files with a format of `.geojson` (https://github.com/longavailable/voronoi-diagram-for-polygons/issues/3, https://github.com/longavailable/voronoi-diagram-for-polygons/issues/5). Actually, that's not a question related to this package. I will explain more here about it. This package is totally based on [GeoPandas]. In other words, any format that can be converted to `geopandas.GeoDataFrame` object is supported. As the [official documentation](https://geopandas.org/en/stable/docs/user_guide/io.html#reading-spatial-data) said:
+
+	> geopandas can read almost any vector-based spatial data format including ESRI shapefile, GeoJSON files and more using the command: `geopandas.read_file()`
+	
+	That means, you can put your `.shp` files as inputs and output as well. Any format you'd like. I used a few geojson-s (`input.geojson`, `boundary.geojson`, and `output.geojson`) in my example because the geojson format is very open. However, it's NOT necessary.
+	
+	For more, I upload the [input.geojson] and [boundary.geojson] files. Hope they helps. For the sake of caution, I declare here that they are only a test file, any actual geographical data, similar or not, I have no guarantee to the accuracy and authenticity for them.
 
 ## Known shortages
 
@@ -143,6 +156,10 @@ Easily, you can import it to
 ### v0.1.4
 
 - Change as [Shapely] goes. `MultiPolygon` is not iterable any more from [Shapely] 2.0.
+
+### v0.1.5
+
+- Upload a few test data.
 
 [Voronoi diagram for polygons]: https://github.com/longavailable/voronoi-diagram-for-polygons
 [Voronoi diagram]: https://en.wikipedia.org/wiki/Voronoi_diagram
