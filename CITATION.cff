@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: longavailable/voronoi-diagram-for-polygons
+abstract: Voronoi diagram for polygons is a tool to create a Voronoi diagram also known as Thiessen polygons for polygons.
+authors:
+  - family-names: Liu
+    given-names: Xiaolong
+    orcid: https://orcid.org/0000-0002-6603-986X
+  - family-names: Yu
+    given-names: Meixiu
+    orcid: https://orcid.org/0000-0001-6155-8890
+type: software
+version: 0.1.6
+date-released: 2023-04-21
+doi: 10.5281/zenodo.3960405
+license: MIT
+repository-code: https://github.com/longavailable/voronoi-diagram-for-polygons
