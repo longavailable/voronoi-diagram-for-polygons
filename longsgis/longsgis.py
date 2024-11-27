@@ -83,7 +83,7 @@ def densify_polygon(gdf, spacing='auto'):
 	'''
 	if isinstance(spacing, (str, float, int)):
 		if isinstance(spacing, str) and spacing.upper() == 'AUTO':
-			spacing = int(0.25 * minimum_distance(gdf))	# less than 0.5? The less, the better?
+			spacing = 0.25 * minimum_distance(gdf)	# less than 0.5? The less, the better?
 		smp = gdf.unary_union	# convert to shapely.geometry.MultiPolygon
 		all_coords = []
 		for g in smp.geoms:
@@ -127,10 +127,10 @@ def voronoiDiagram4plg(gdf, mask, densify=False, spacing='auto'):
 	gdf_temp = ( gpd.sjoin(gdf_vd_primary, gdf, how='inner', predicate='intersects')
 		.dissolve(by='index_right').reset_index(drop=True) )
 	gdf_vd = gpd.clip(gdf_temp, mask)
-	gdf_vd = dropHoles(gdf_vd)
+	gdf_vd['geometry'] = gdf_vd['geometry'].map(dropHoles)
 	return gdf_vd
 
-def dropHolesBase(plg):
+def dropHoles(plg):
 	'''Basic function to remove / drop / fill the holes.
 	
 	Parameters:
@@ -147,20 +147,3 @@ def dropHolesBase(plg):
 	elif isinstance(plg, Polygon):
 		return Polygon(plg.exterior)
 
-def dropHoles(gdf):
-	'''Remove / drop / fill the holes / empties for iterms in GeoDataFrame.
-	
-	Parameters:
-		gdf:
-			Type: geopandas.GeoDataFrame
-	Returns:
-		gdf_nohole: GeoDataFrame without holes
-			Type: geopandas.GeoDataFrame
-	'''
-	gdf_nohole = gpd.GeoDataFrame()
-	for g in gdf['geometry']:
-		geo = gpd.GeoDataFrame(geometry=gpd.GeoSeries(dropHolesBase(g)))
-		gdf_nohole=pd.concat([gdf_nohole, geo], ignore_index=True)
-	gdf_nohole.rename(columns={gdf_nohole.columns[0]:'geometry'}, inplace=True)
-	gdf_nohole.crs = gdf.crs
-	return gdf_nohole
