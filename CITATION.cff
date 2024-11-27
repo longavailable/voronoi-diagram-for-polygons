@@ -10,8 +10,8 @@ authors:
     given-names: Meixiu
     orcid: https://orcid.org/0000-0001-6155-8890
 type: software
-version: 0.1.6
-date-released: 2023-04-21
+version: 0.1.7
+date-released: 2024-11-27
 doi: 10.5281/zenodo.3960405
 license: MIT
 repository-code: https://github.com/longavailable/voronoi-diagram-for-polygons
