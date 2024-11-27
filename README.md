@@ -174,3 +174,8 @@ Easily, you can import it to
 [input.geojson]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/tests/input.geojson
 [boundary.geojson]: https://github.com/longavailable/voronoi-diagram-for-polygons/raw/main/tests/boundary.geojson
 
+
+### v0.1.7
+
+- Enhance the applicability to geometry coordinate system (GCS). [#10](https://github.com/longavailable/voronoi-diagram-for-polygons/issues/10#issue-2696433193).
+- Refactor `dropHoles()` by [jwardbond](https://github.com/jwardbond).
