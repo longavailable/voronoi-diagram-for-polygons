@@ -83,7 +83,7 @@ def densify_polygon(gdf, spacing='auto'):
 	'''
 	if isinstance(spacing, (str, float, int)):
 		if isinstance(spacing, str) and spacing.upper() == 'AUTO':
-			spacing = int(0.25 * minimum_distance(gdf))	# less than 0.5? The less, the better?
+			spacing = 0.25 * minimum_distance(gdf)	# less than 0.5? The less, the better?
 		smp = gdf.unary_union	# convert to shapely.geometry.MultiPolygon
 		all_coords = []
 		for g in smp.geoms:
