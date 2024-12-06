@@ -1,3 +1,6 @@
+# Folders
 voronoi_diagram_for_polygons.egg-info/
 dist/
 build/
+.vscode/
+__pycache__/
