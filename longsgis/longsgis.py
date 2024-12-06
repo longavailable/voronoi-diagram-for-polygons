@@ -80,21 +80,25 @@ def densify_polygon(gdf, spacing='auto'):
 	Returns:
 		A set of new polygon(s) with more vertices.
 		Type: geopandas.GeoDataFrame
+	Raises:
+		ValueError: if spacing is not a string, int, or float.
 	'''
-	if isinstance(spacing, (str, float, int)):
-		if isinstance(spacing, str) and spacing.upper() == 'AUTO':
-			spacing = 0.25 * minimum_distance(gdf)	# less than 0.5? The less, the better?
-		smp = gdf.unary_union	# convert to shapely.geometry.MultiPolygon
-		all_coords = []
-		for g in smp.geoms:
-			coords=np.dstack(g.exterior.coords.xy).tolist()	# vertices of each geometry
-			all_coords.append(*coords)
-			
-		polygons = []
-		for i, p in enumerate(all_coords):
-			new_polygon = Polygon(_pnts_on_line_(np.array(p),spacing=spacing))	# densify each polygon
-			polygons.append(new_polygon)
-		return gpd.GeoDataFrame({'geometry': polygons}, crs=gdf.crs)
+	if not isinstance(spacing, (str, float, int)):
+		raise ValueError("Spacing must be a string, int, or float.")
+
+	if isinstance(spacing, str) and spacing.upper() == 'AUTO':
+		spacing = 0.25 * minimum_distance(gdf)	# less than 0.5? The less, the better?
+
+	# Create a geoseries containing lists of exterior points
+	ext_list = gdf["geometry"].map(lambda g: list(g.exterior.coords))
+
+	# Add points to boundary of polygon
+	gdf["geometry"] = ext_list.map(
+		lambda x: Polygon(_pnts_on_line_(np.array(x),spacing=spacing))
+	)
+
+	# Drop the temp exterior point column
+	return gdf
 
 def voronoiDiagram4plg(gdf, mask, densify=False, spacing='auto'):
 	'''Create Voronoi diagram / Thiessen polygons based on polygons.
