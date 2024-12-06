@@ -112,6 +112,7 @@ def voronoiDiagram4plg(gdf, mask, densify=False, spacing='auto'):
 		gdf_vd: Thiessen polygons
 			Type: geopandas.geodataframe.GeoDataFrame
 	'''
+	gdf = gdf.copy()
 	if densify: gdf = densify_polygon(gdf, spacing=spacing)
 	gdf.reset_index(drop=True)
 	#convert to shapely.geometry.MultiPolygon
