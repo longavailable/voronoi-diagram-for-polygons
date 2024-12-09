@@ -1,8 +1,9 @@
 import unittest
 import warnings
 
-from shapely.geometry import Polygon
 import geopandas as gpd
+from shapely.geometry import Polygon
+
 from longsgis import densify_polygon
 
 

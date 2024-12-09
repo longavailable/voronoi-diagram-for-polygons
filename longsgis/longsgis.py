@@ -1,7 +1,7 @@
 """Finds the approximate voronoi diagram generated around a polygon.
 
 Forked from https://github.com/longavailable/voronoi-diagram-for-polygons and last
-updated on updated on 2023/04/17.
+updated on 2024/12/09. Updated from source 2024/12/09.
 """
 
 import itertools
@@ -52,7 +52,7 @@ def _pnts_on_line_(a: np.ndarray, spacing: float = 1.0, is_percent: bool = False
     Returns:
         numpy.ndarray: Densified array of points.
     """
-    N = len(a) - 1  # segments
+    n = len(a) - 1  # segments
     dxdy = a[1:, :] - a[:-1, :]  # coordinate differences
     leng = np.sqrt(np.einsum("ij,ij->i", dxdy, dxdy))  # segment lengths
     if is_percent:  # as percentage
@@ -62,15 +62,15 @@ def _pnts_on_line_(a: np.ndarray, spacing: float = 1.0, is_percent: bool = False
     else:
         steps = leng / spacing  # step distance
     deltas = dxdy / (steps.reshape(-1, 1))  # coordinate steps
-    pnts = np.empty((N,), dtype="O")  # construct an `O` array
-    for i in range(N):  # cycle through the segments and make
+    pnts = np.empty((n,), dtype="O")  # construct an `O` array
+    for i in range(n):  # cycle through the segments and make
         num = np.arange(steps[i])  # the new points
         pnts[i] = np.array((num, num)).T * deltas[i] + a[i]
     a0 = a[-1].reshape(1, -1)  # add the final point and concatenate
     return np.concatenate((*pnts, a0), axis=0)
 
 
-def densify_polygon(gdf: gpd.GeoDataFrame, spacing="auto"):
+def densify_polygon(gdf: gpd.GeoDataFrame, spacing="auto") -> gpd.GeoDataFrame:  # noqa: ANN001
     """Densify the vertex along the edge of polygon(s).
 
     Args:
@@ -95,7 +95,7 @@ def densify_polygon(gdf: gpd.GeoDataFrame, spacing="auto"):
 
     # Add points to boundary of polygon
     gdf["geometry"] = ext_list.map(
-        lambda x: Polygon(_pnts_on_line_(np.array(x), spacing=spacing))
+        lambda x: Polygon(_pnts_on_line_(np.array(x), spacing=spacing)),
     )
 
     # Drop the temp exterior point column
@@ -104,9 +104,9 @@ def densify_polygon(gdf: gpd.GeoDataFrame, spacing="auto"):
 
 def voronoiDiagram4plg(
     gdf: gpd.GeoDataFrame,
-    mask,
+    mask,  # noqa: ANN001
     densify: bool = False,
-    spacing="auto",
+    spacing="auto",  # noqa: ANN001
 ) -> gpd.GeoDataFrame:
     """Create Voronoi diagram / Thiessen polygons based on polygons.
 
