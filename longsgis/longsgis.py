@@ -12,6 +12,7 @@ import shapely
 from shapely.ops import voronoi_diagram as svd
 from shapely.geometry import Polygon, MultiPolygon
 import itertools, math
+import matplotlib.pyplot as plt
 
 def minimum_distance(gdf):
 	'''Calculate the minimum distance of all vertices of input geometries.
@@ -122,12 +123,17 @@ def voronoiDiagram4plg(gdf, mask, densify=False, spacing='auto'):
 	#convert to GeoSeries and explode to single polygons
 	#note that it is NOT supported to GeoDataFrame directly
 	gs = gpd.GeoSeries([smp_vd]).explode(index_parts=True)
+
+	# Fix any invalid polygons
+	gs.loc[~gs.is_valid] = gs.loc[~gs.is_valid].apply(lambda geom: geom.buffer(0))
+
 	#convert to GeoDataFrame
 	#note that if gdf was shapely.geometry.MultiPolygon, it has no attribute 'crs'
 	gdf_vd_primary = gpd.geodataframe.GeoDataFrame(geometry=gs, crs=gdf.crs)
 	
 	#reset index
 	gdf_vd_primary.reset_index(drop=True)	#append(gdf)
+
 	#spatial join by intersecting and dissolve by `index_right`
 	gdf_temp = ( gpd.sjoin(gdf_vd_primary, gdf, how='inner', predicate='intersects')
 		.dissolve(by='index_right').reset_index(drop=True) )
