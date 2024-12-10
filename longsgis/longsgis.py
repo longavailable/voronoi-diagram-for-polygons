@@ -25,11 +25,14 @@ def minimum_distance(gdf: gpd.GeoDataFrame) -> float:
     """
     smp = gdf.unary_union  # convert to shapely.geometry.MultiPolygon
     vertices = []
-    for g in smp.geoms:
-        coords = np.dstack(g.exterior.coords.xy).tolist()[
-            0
-        ]  # vertices of each geometry
-        vertices = vertices + coords
+
+    if isinstance(smp, shapely.Polygon):
+        coords = np.dstack(smp.exterior.coords.xy).tolist()[0]
+        vertices.extend(coords)
+    else:
+        for g in smp.geoms:
+            coords = np.dstack(g.exterior.coords.xy).tolist()[0]
+            vertices.extend(coords)
     potentials = list(itertools.combinations(vertices, 2))  # pairs of vertices
     all_distance = [
         math.sqrt((pp[0][0] - pp[1][0]) ** 2 + (pp[0][1] - pp[1][1]) ** 2)
@@ -102,7 +105,7 @@ def densify_polygon(gdf: gpd.GeoDataFrame, spacing="auto") -> gpd.GeoDataFrame: 
     return gdf
 
 
-def voronoiDiagram4plg(
+def voronoiDiagram4plg(  # noqa: N802
     gdf: gpd.GeoDataFrame,
     mask,  # noqa: ANN001
     densify: bool = False,
@@ -157,7 +160,7 @@ def voronoiDiagram4plg(
     return gdf_vd
 
 
-def dropHoles(
+def dropHoles(  # noqa: N802
     plg: (shapely.geometry.MultiPolygon | shapely.geometry.Polygon),
 ) -> shapely.geometry.MultiPolygon | shapely.geometry.Polygon:
     """Basic function to remove / drop / fill the holes.
