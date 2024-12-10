@@ -1,0 +1,66 @@
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+lint.select = [
+    "ALL", # include all the rules, including new ones
+]
+
+lint.exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "archive*"
+]
+
+lint.ignore = [ 
+    "PT009",    # Assertion errors 
+    "TD",       # Errors with todos
+    "FIX001",   # Fixing HACKS
+    "FIX002",   # Suggestions to fix todos
+    "FIX004",   # Fixing FIXMEs
+    "PLR0913",  # Too many arguments
+    "ERA001",   # Commented out code
+    "D105",     # Docstrings in magic methods
+    "PERF401",  # Use list comprehension instead of for
+    "E501",     # Docstring line length
+    "RET504",   # Unecessary assignment before return
+    "ANN202",   # Return type for private function
+    "ANN204",   # Return type for magic function
+    "PTH110",   # Should use Path rathen than OS
+    "PTH118",   # Should use Path rather than OS
+    "PTH206",   # Should use Path rather than OS
+    "PD901",    # df for dataframes
+    "FBT001",   # Boolean defaults
+    "FBT002",   # Boolean deafaults again
+    ]
+
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D", "ANN201", "PT", "SLF001"] # Docstrings etc.
+"download.py" = ["T201"] # Print statements
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
