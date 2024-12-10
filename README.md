@@ -179,3 +179,11 @@ Easily, you can import it to
 
 - Enhance the applicability to geometry coordinate system (GCS). [#10](https://github.com/longavailable/voronoi-diagram-for-polygons/issues/10#issue-2696433193).
 - Refactor `dropHoles()` by [jwardbond](https://github.com/jwardbond).
+
+### v0.1.8
+
+By [jwardbond](https://github.com/jwardbond)，
+
+- Update `densify_polygons()` to keep the original columns.
+
+- Automate code formatting with [ruff](https://docs.astral.sh/ruff/) and configure it using `pyproject.toml`.
