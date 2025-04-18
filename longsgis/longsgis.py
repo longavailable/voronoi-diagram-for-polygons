@@ -6,6 +6,7 @@ updated on 2024/12/09. Updated from source 2024/12/09.
 
 import itertools
 import math
+from typing import Union
 
 import geopandas as gpd
 import numpy as np
@@ -86,7 +87,7 @@ def densify_polygon(gdf: gpd.GeoDataFrame, spacing="auto") -> gpd.GeoDataFrame: 
     Raises:
         ValueError: If spacing is not a string, int, or float.
     """
-    if not isinstance(spacing, str | float | int):
+    if not isinstance(spacing, (str, float, int)):
         msg = "Spacing must be a string, int, or float."
         raise TypeError(msg)
 
@@ -161,8 +162,8 @@ def voronoiDiagram4plg(  # noqa: N802
 
 
 def dropHoles(  # noqa: N802
-    plg: (shapely.geometry.MultiPolygon | shapely.geometry.Polygon),
-) -> shapely.geometry.MultiPolygon | shapely.geometry.Polygon:
+    plg: Union[shapely.geometry.MultiPolygon, shapely.geometry.Polygon],
+) -> Union[shapely.geometry.MultiPolygon, shapely.geometry.Polygon]:
     """Basic function to remove / drop / fill the holes.
 
     Args:
